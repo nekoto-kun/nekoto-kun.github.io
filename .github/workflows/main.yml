@@ -16,23 +16,26 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "1.22.x"
-          channel: "beta" # Currently you have to use beta channel for Flutter web.
+          channel: "stable"
       - name: Upgrades flutter
         run: flutter upgrade
       - name: Enable Web
         run: flutter config --enable-web
       - name: Install dependencies
         run: flutter packages get
+      - name: Analyze Code
+        run: flutter analyze
+      - name: Test Code
+        run: flutter test
       - name: Build Web
         run: flutter build web
       - name: Deploy
         run: |
           cd build/web
           git init
-          git config user.name  "Andre Actions"
+          git config user.name  "flutter-web-actions"
           git config user.email "andreyonathan65@gmail.com"
-          git remote add secure-origin https://${{ secrets.ACCESS_TOKEN }}@github.com/nekoto-kun/personal_web.git
+          git remote add secure-origin https://${{ secrets.ACCESS_TOKEN }}@github.com/nekoto-kun/nekoto-kun.github.io.git
           git checkout -b gh-pages
           git add .
           git commit -m "Update contents"
