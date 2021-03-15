@@ -8,7 +8,7 @@
       "name": "Debug on Chrome",
       "request": "launch",
       "type": "dart",
-      "args": ["-d", "chrome", "--web-hostname", "localhost", "--web-port", "3000"]
+      "args": ["-d", "chrome", "--web-hostname", "localhost", "--web-port", "6969"]
     }
   ]
 }
